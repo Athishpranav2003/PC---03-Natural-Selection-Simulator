@@ -38,11 +38,11 @@ while length(position list)<10000
 		if x=1
 			remove up,diagonally up right,diagonally up left from available moves 
 		else if x=n
-      		remove down,diagonally down right,diagonally down left from available moves if they are present(to be checked as it might have been removed earlier)
+      		remove down,diagonally down right,diagonally down left from available moves if the moves are available(checking as it might have been removed earlier)
 		else if y=1
-      		remove left,diagonally up left,diagonally down left from available moves if they are present
+      		remove left,diagonally up left,diagonally down left from available moves if the moves are available
 		else if y=n
-      		remove right,diagonally down right,diagonally up right from available moves if they are present
+      		remove right,diagonally down right,diagonally up right from available moves if the moves are available
 		move the organism randomly with available moves (random function usage upon given sample space)
 		if done move is left
 			y=y-1
