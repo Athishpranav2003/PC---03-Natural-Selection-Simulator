@@ -54,7 +54,8 @@ while length(position list)<10000
 			x=x+1	
 		position list.append(x,y)
 	else
-		consider element in food corresonding to the minimum distance, let it be (a,b)
+		consider element in food corresonding to the minimum distance,let it be (a,b),
+		this can be done by traversing the list and finding corresponding index of the minimun distance element.
 		if x<a
 			while x<a and length(position list)<10000
 				x=x+1
