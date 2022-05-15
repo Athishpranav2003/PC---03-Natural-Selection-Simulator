@@ -1,0 +1,101 @@
+This pseudocode is to make list of position of organism after every iteration
+
+position list =[]
+initial position is (x0,y0)
+current position is (x,y)=(x0,y0)
+radius is r
+matrix is M of order n*n(indexing is from top to bottom left to right)
+number of iterations completed is length(position list)
+
+while length(position list)<10000
+	list of indices the food cells available within radius r is food=[]
+	and list cartesian distance of them from current position is distance=[]
+	while -r<=i<=r
+		if x+i<1
+			i=1-x
+			x'=1
+		else if x+i>n
+			x'=n
+			i=r+1
+		else 
+			x'=x+i
+		i=i+1
+		while -(floor(r^2-i^2))<=j<=floor(r^2-i^2)
+			if y+j<1
+				j=1-y
+				y'=1
+			else if y+j>n
+				y'=n
+				j=floor(r^2-i^2)+1
+			else 
+				y'=y+j 
+			j=j+1
+			if M[x'][y'] = 2
+				food.append((x',y'))
+				distance.append(((x'-x)^2+(y'-y)^2)^(0.5))
+	if food is None
+		available moves=[left, right,up,down,diagonally up right,diagonally up left,diagonally down right,diagonally down left]
+		if x=1
+			remove up,diagonally up right,diagonally up left from available moves 
+		else if x=n
+      		remove down,diagonally down right,diagonally down left from available moves if they are present(to be checked as it might have been removed earlier)
+		else if y=1
+      		remove left,diagonally up left,diagonally down left from available moves if they are present
+		else if y=n
+      		remove right,diagonally down right,diagonally up right from available moves if they are present
+		move the organism randomly with available moves (random function usage upon given sample space)
+		if done move is left
+			y=y-1
+		else if done move is right
+			y=y+1
+		else if done move is up
+			x=x-1
+		else if done move is down
+			x=x+1	
+		else if done move is diagonally up right
+			x=x-1
+			y=y+1
+		else if done move is diagonally up left
+			x=x-1
+			y=y-1
+		else if done move is diagonally down right
+			x=x+1
+			y=y+1
+		else 
+			x=x+1
+			y=y-1	
+		position list.append(x,y)
+	else
+		consider element in food corresonding to the minimum distance, let it be (a,b)
+		if x<a
+			while x<a and length(position list)<10000
+				x=x+1
+				if y<b
+					y=y+1
+				else if y>b
+					y=y-1
+				position list.append(x,y)
+		else
+			while x>a and length(position list)<10000
+				x=x-1
+				if y<b
+					y=y+1
+				else if y>b
+					y=y-1
+				position list.append(x,y)
+		if y<b
+			while y<b and length(position list)<10000
+				y=y+1
+				if x<a
+					x=x+1
+				else if x>a
+					x=x-1
+				position list.append(x,y)
+		else
+			while y>b and length(position list)<10000
+				y=y-1
+				if x<a
+					x=x+1
+				else if x>a
+					x=x-1
+				position list.append(x,y)

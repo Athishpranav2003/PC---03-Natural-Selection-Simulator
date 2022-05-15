@@ -1,0 +1,73 @@
+This pseudocode is to make list of position of organism after every iteration
+
+position list =[]
+initial position is (x0,y0)
+current position is (x,y)=(x0,y0)
+radius is r
+matrix is M of order n*n
+number of iterations completed is length(position list)
+
+while length(position list)<10000
+	list of indices the food cells available within radius r is food=[]
+	and list manhattan distance of them from current position is distance=[]
+	while -r<=i<=r
+		if x+i<1
+			i=1-x
+			x'=1
+		else if x+i>n
+			x'=n
+			i=r+1
+		else 
+			x'=x+i
+		i=i+1
+		while -r+|i|<=j<=r-|i|
+			if y+j<1
+				j=1-y
+				y'=1
+			else if y+j>n
+				y'=n
+				j=r-|i|+1
+			else 
+				y'=y+j 
+			j=j+1
+			if M[x'][y'] = 2
+				food.append((x',y'))
+				distance.append(|x'-x|+|y'-y|)
+	if food is None
+		available moves=[left, right,up,down]
+		if x=1
+			remove up from available moves
+		else if x=n
+      		remove down from available moves
+		else if y=1
+      		remove left from available moves
+		else if y=n
+      		remove right from available moves
+		move the organism randomly with available moves(random function usage upon given sample space)
+		if done move is left
+			y=y-1
+		else if done move is right
+			y=y+1
+		else if done move is up
+			x=x-1
+		else
+			x=x+1	
+		position list.append(x,y)
+	else
+		consider element in food corresonding to the minimum distance, let it be (a,b)
+		if x<a
+			while x<a and length(position list)<10000
+				x=x+1
+				position list.append(x,y)
+		else
+			while x>a and length(position list)<10000
+				x=x-1
+				position list.append(x,y)
+		if y<b
+			while y<b and length(position list)<10000
+				y=y+1
+				position list.append(x,y)
+		else
+			while y>b and length(position list)<10000
+				y=y-1
+				position list.append(x,y)
