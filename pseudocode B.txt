@@ -74,7 +74,6 @@ while length(position list)<10000
 					y=y+1
 				else if y>b
 					y=y-1
-				position list.append(x,y)
 		else
 			while x>a and length(position list)<10000
 				x=x-1
@@ -82,7 +81,6 @@ while length(position list)<10000
 					y=y+1
 				else if y>b
 					y=y-1
-				position list.append(x,y)
 		if y<b
 			while y<b and length(position list)<10000
 				y=y+1
@@ -90,7 +88,6 @@ while length(position list)<10000
 					x=x+1
 				else if x>a
 					x=x-1
-				position list.append(x,y)
 		else
 			while y>b and length(position list)<10000
 				y=y-1
@@ -98,4 +95,4 @@ while length(position list)<10000
 					x=x+1
 				else if x>a
 					x=x-1
-				position list.append(x,y)
+		position list.append(x,y)
